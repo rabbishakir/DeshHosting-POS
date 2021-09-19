@@ -17,7 +17,7 @@
 
                     <p>{{ __('You are logged in!') }}</p>
                     <a href="/posts/create">Create Posts </a>
-                    <h3>Your Blog Posts </h3>
+                    <h3>Your Blog Posts are here second </h3>
                 </div>
                
             </div>
