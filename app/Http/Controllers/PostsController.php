@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 use PhpParser\Node\Expr\PostDec;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -50,10 +52,11 @@ class PostsController extends Controller
         ]);
 
        
-        
+        $user= User::all();
         $post = new Post;
         $post->name = $request->input('name');
         $post->body = $request->input('body');
+        $post->user_id = Auth::user()->id;
         $post->save();
 
         return redirect('/posts')->with('success','Post Created');
