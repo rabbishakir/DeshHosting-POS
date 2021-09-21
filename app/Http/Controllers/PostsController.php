@@ -9,6 +9,8 @@ use PhpParser\Node\Expr\PostDec;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
+
+
 class PostsController extends Controller
 {
     /**
@@ -57,6 +59,7 @@ class PostsController extends Controller
         $post->name = $request->input('name');
         $post->body = $request->input('body');
         $post->user_id = Auth::user()->id;
+        $post->post_category = Auth::user()->id;
         $post->save();
 
         return redirect('/posts')->with('success','Post Created');
@@ -115,6 +118,6 @@ class PostsController extends Controller
     {
         $post= Post::find($id);
         $post->delete();
-        return redirect('/posts')->with('success','Post Deleted');
+        return redirect('/dashboard')->with('success','Post Deleted');
     }
 }

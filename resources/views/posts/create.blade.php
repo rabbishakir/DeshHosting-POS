@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('bodyContent')
 
 <main role="main" class="container">
