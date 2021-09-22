@@ -11,10 +11,15 @@
     <div class="content">
       <p>{!!$post->body!!}</p> 
     </div>
-    <a href="/posts/{{$post->id}}/edit" class="btn btn-primary float-left">Edit</a>  
-    {!! Form::open(['action' => ['PostsController@destroy', $post->id], 'method'=>'POST']) !!}
-    {{ Form::hidden('_method', 'DELETE') }}
-    {{ Form::submit('Delete', ['class'=>'btn btn-info float-left'])}}
-    {!! Form::close() !!}
+
+    @if(!Auth::guest())
+      @if (Auth::user()->id == $post->user_id )   
+        <a href="/posts/{{$post->id}}/edit" class="btn btn-primary float-left">Edit</a>  
+        {!! Form::open(['action' => ['PostsController@destroy', $post->id], 'method'=>'POST']) !!}
+        {{ Form::hidden('_method', 'DELETE') }}
+        {{ Form::submit('Delete', ['class'=>'btn btn-info float-left'])}}
+        {!! Form::close() !!}
+      @endif
+    @endif
 </main>
 @endsection    

@@ -14,6 +14,8 @@
                 <img class="card-img-top" src="{{ URL::to('/assets/img/card_image.jpg') }}" alt="Card image" style="width:100%">
                 <div class="card-body">
                     <h4 class="card-title">{{$post->name}}</h4>
+                    <small>Created at {{$post->created_at}}</small> <br>
+                    <small>by {{$post->user->name}}</small>
                     <p class="card-text">{!!$post->body!!}</p>
                     <a href="posts/{{$post->id}}" class="btn btn-primary">Read More</a>
                 </div>
